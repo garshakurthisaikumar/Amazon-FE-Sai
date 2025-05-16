@@ -1,4 +1,4 @@
-resource "aws_security_group" "Jenkins-sg" {
+resource "aws_security_group" "Jenkins-sg1" {
   name        = "Jenkins-Security Group"
   description = "Open 22,443,80,8080,9000"
 
@@ -25,20 +25,20 @@ resource "aws_security_group" "Jenkins-sg" {
   }
 
   tags = {
-    Name = "Jenkins-sg"
+    Name = "Jenkins-sg1"
   }
 }
 
 
 resource "aws_instance" "web" {
-  ami                    = "ami-0f5ee92e2d63afc18"
+  ami                    = "ami-084568db4383264d4"
   instance_type          = "t2.large"
-  key_name               = "Mumbai"
+  key_name               = "saig1"
   vpc_security_group_ids = [aws_security_group.Jenkins-sg.id]
   user_data              = templatefile("./install_jenkins.sh", {})
 
   tags = {
-    Name = "Jenkins-sonar"
+    Name = "Jenkins-sonar1"
   }
   root_block_device {
     volume_size = 30
