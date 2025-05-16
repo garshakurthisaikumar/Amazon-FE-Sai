@@ -34,7 +34,7 @@ resource "aws_instance" "web" {
   ami                    = "ami-084568db4383264d4"
   instance_type          = "t2.large"
   key_name               = "saig1"
-  vpc_security_group_ids = [aws_security_group.Jenkins-sg.id]
+  vpc_security_group_ids = [aws_security_group.Jenkins-sg1.id]
   user_data              = templatefile("./install_jenkins.sh", {})
 
   tags = {
